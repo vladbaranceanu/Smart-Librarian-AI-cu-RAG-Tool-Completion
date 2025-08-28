@@ -9,7 +9,7 @@ An AI chatbot that:
 - **RAG** with ChromaDB over your local `.md` documents
 - **Exact-title summary tool** from `book_summaries.md`
 - **Inappropriate-language filter** (blocks and replies politely without hitting the LLM)
-- **CLI** and **Streamlit UI** (with audio playback via OpenAI TTS)
+- **CLI**  (with audio playback via OpenAI TTS)
 
 ---
 
@@ -39,7 +39,6 @@ pip install playsound==1.2.2
 ```
 your-project/
 ├─ main.py                       # your CLI script (GPT+RAG + summary + TTS)
-├─ streamlit_app.py              # optional Streamlit UI
 ├─ .env                          # holds OPENAI_API_KEY
 ├─ book_summaries.md          # detailed summaries file
 └─ README.md
@@ -82,17 +81,6 @@ A classic adventure following Bilbo Baggins as he leaves the Shire and discovers
 
 ---
 
-## 📚 Adding RAG Documents
-
-Place `.md` files alongside `book_summaries.md` in:
-
-```
-C:/Users/vbaranceanu/PycharmProjects/RagProject
-```
-
-These documents are embedded and indexed into **ChromaDB** and used to justify recommendations.
-
----
 
 ## ▶️ Running (CLI)
 
@@ -114,24 +102,6 @@ python main.py
 
 > The MP3 is saved (default `recommendation_summary.mp3`) in the project folder.
 
----
-
-## 🖥️ Running (Streamlit UI)
-
-1) Ensure `streamlit` is installed.
-2) Start the app:
-
-```bash
-streamlit run streamlit_app.py
-```
-
-3) In the browser:
-- Enter your preferences → click **Generate recommendation**
-- Click **🔊 Play audio** to synthesize and play TTS
-
-> Streamlit plays audio in the browser; no `playsound` needed.
-
----
 
 ## 🛡️ Inappropriate Language Filter
 
@@ -162,26 +132,6 @@ streamlit run streamlit_app.py
   - Prompt: `Give me the summary for 1984`
 - **Audio**:
   - After a result in CLI, press `p` to generate and play audio.
-  - In Streamlit, click **🔊 Play audio**.
-
----
-
-## 🧩 Troubleshooting
-
-- **No summary found**  
-  Ensure the title in `book_summaries.md` matches exactly (including punctuation and casing).
-- **TTS errors**  
-  - Try switching model name to `tts-1`.
-  - Ensure your API key has access to TTS.
-- **ChromaDB issues**  
-  - Delete the local Chroma folder (`langchain_store`) if you want a clean rebuild.
-  - Ensure you’re not mixing incompatible versions of `chromadb` and `langchain-community`.
-- **Unstructured errors**  
-  - Install suggested system deps or simplify loaders to Markdown only.
-- **Audio won’t play in CLI**  
-  - Install `playsound==1.2.2`, or open the saved MP3 manually with your OS player.
-- **Windows path differences**  
-  - Update `markdown_path` and `SUMMARIES_MD_PATH` in code to your actual paths.
 
 ---
 
@@ -193,10 +143,5 @@ streamlit run streamlit_app.py
 
 ---
 
-## 📜 License
-
-Add your chosen license here (e.g., MIT).
-
----
 
 Happy reading! 📖✨
